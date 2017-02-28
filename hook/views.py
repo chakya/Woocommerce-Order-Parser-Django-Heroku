@@ -9,28 +9,28 @@ import requests
 @csrf_exempt
 @require_POST
 def webhook(request):
-    # jsondata = request.body
-    # # print(jsondata)
-    # data = json.loads(jsondata.decode())
-    # # print(data)
-    # orderItem=data['order']['line_items'][0]
-    # orderName=orderItem['name']
-    # orderPrice=orderItem['price']
-    # orderQuatity=orderItem['quantity']
-    # customer=data['order']['customer']
-    # custAdd=customer['billing_address']
-    # address=custAdd['address_1']+custAdd['address_2']
-    #
-    # text='{} {} {} {}'.format(orderQuatity,orderName, orderPrice, address)
-    #
-    #
-    # #send to telegram
-    # url='https://api.telegram.org/bot'
-    # url+='271450263:AAHV8VK5b1HiZUGz_cLp5bmd3epalHsIz3c/'
-    # sendMesUrl=url+'sendMessage?chat_id={}&text={}'
-    # requests.post(sendMesUrl.format("269856018",text))
-    # requests.post(sendMesUrl.format("235092071", text))
-    # print(data['order']['line_items'][0]['name'])
+    jsondata = request.body
+    # print(jsondata)
+    data = json.loads(jsondata.decode())
+    # print(data)
+    orderItem=data['order']['line_items'][0]
+    orderName=orderItem['name']
+    orderPrice=orderItem['price']
+    orderQuatity=orderItem['quantity']
+    customer=data['order']['customer']
+    custAdd=customer['billing_address']
+    address=custAdd['address_1']+custAdd['address_2']
+
+    text='{} {} {} {}'.format(orderQuatity,orderName, orderPrice, address)
+
+
+    #send to telegram
+    url='https://api.telegram.org/bot'
+    url+='271450263:AAHV8VK5b1HiZUGz_cLp5bmd3epalHsIz3c/'
+    sendMesUrl=url+'sendMessage?chat_id={}&text={}'
+    requests.post(sendMesUrl.format("269856018",text))
+    requests.post(sendMesUrl.format("235092071", text))
+    print(data['order']['line_items'][0]['name'])
     return HttpResponse(status=200)
     # WebhookTransaction.objects.create(
     #     date_event_generated=datetime.datetime.fromtimestamp(
