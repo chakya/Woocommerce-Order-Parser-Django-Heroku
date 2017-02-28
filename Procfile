@@ -1,1 +1,1 @@
-worker: python2.7 manage.py runserver
+web: gunicorn hooktest.wsgi --log-file -
