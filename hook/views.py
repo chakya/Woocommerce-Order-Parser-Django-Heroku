@@ -30,6 +30,7 @@ def webhook(request):
     sendMesUrl=url+'sendMessage?chat_id={}&text={}'
     requests.post(sendMesUrl.format("269856018",text))
     requests.post(sendMesUrl.format("235092071", text))
+    requests.post(sendMesUrl.format("329891854", text))
     print(data['order']['line_items'][0]['name'])
     return HttpResponse(status=200)
     # WebhookTransaction.objects.create(
