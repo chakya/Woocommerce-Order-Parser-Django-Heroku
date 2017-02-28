@@ -1,1 +1,1 @@
-web: python hooktest/manage.py runserver
+web: gunicorn hooktest.wsgi --log-file -
