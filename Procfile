@@ -1,1 +1,1 @@
-web: python2.7 manage.py runserver
+worker: python2.7 manage.py runserver
