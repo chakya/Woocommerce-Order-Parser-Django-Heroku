@@ -20,9 +20,9 @@ def webhook(request):
     customer=data['order']['customer']
     custAdd=customer['billing_address']
     address=custAdd['address_1']+custAdd['address_2']
-
+    print('<h1>amazing</h1>')
     text='{} {} {} {}'.format(orderQuatity,orderName, orderPrice, address)
-    return HttpResponse(status=200)
+
 
     #send to telegram
     url='https://api.telegram.org/bot'
