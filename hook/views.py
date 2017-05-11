@@ -7,7 +7,7 @@ import requests
 
 
 @csrf_exempt
-@require_POST
+# @require_POST
 def webhook(request):
     jsondata = request.body
     # print(jsondata)
@@ -32,15 +32,16 @@ def webhook(request):
     requests.post(sendMesUrl.format("235092071", text))
     requests.post(sendMesUrl.format("329891854", text))
     print(data['order']['line_items'][0]['name'])
+    print('hello')
     return HttpResponse(status=200)
-    # WebhookTransaction.objects.create(
-    #     date_event_generated=datetime.datetime.fromtimestamp(
-    #         data['timestamp']/1000.0,
-    #         tz=timezone.get_current_timezone()
-    #     ),
-    #     body=data,
-    #     request_meta=meta
-    # )
+    WebhookTransaction.objects.create(
+        date_event_generated=datetime.datetime.fromtimestamp(
+            data['timestamp']/1000.0,
+            tz=timezone.get_current_timezone()
+        ),
+        body=data,
+        request_meta=meta
+    )
 
 
 
